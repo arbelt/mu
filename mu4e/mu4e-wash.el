@@ -64,6 +64,11 @@ Perform several transformations on the message body:
   (while (re-search-forward "\\(\n\\|^[^>].*\\)\n\\(^>[> ]*\n\\)" nil t)
     (replace-match "\\1\n"))
 
+  (goto-char (point-min))
+  (while (re-search-forward "^> +>" nil t)
+    (replace-match ">>")
+    (line-beginning-position))
+
   ;; Remove citation trailers standing alone after a block of cited
   ;; text.
   (goto-char (point-min))

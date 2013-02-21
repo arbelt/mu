@@ -192,7 +192,7 @@ store your org-contacts."
 (defun mu4e-action-retag-message (msg &optional retag-arg)
   "Change tags of a message. Example: +tag \"+long tag\" -oldtag
    adds 'tag' and 'long tag', and removes oldtag."
-  (let* ((retag (or retag-arg (read-string "Tags: ")))
+  (let* ((retag (or retag-arg (completing-read "Tags: " '())))
 	  (path (mu4e-message-field msg :path))
 	  (maildir (mu4e-message-field msg :maildir))
 	  (oldtags (mu4e-message-field msg :tags))
